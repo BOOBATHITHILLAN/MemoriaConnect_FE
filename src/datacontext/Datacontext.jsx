@@ -7,8 +7,8 @@ const Datacontext = createContext({});
 export const DataProvider = ({ children }) => {
   const [mode, setMode] = useState("light");
   const theme = useMemo(() => createTheme(themeSettings(mode)));
-  const url = "https://memoriaconnect-be.onrender.com";
-  // const url="http://localhost:3001"
+  const url = import.meta.env.VITE_URL
+
 
   return (
     <Datacontext.Provider value={{ url, theme, mode, setMode }}>
