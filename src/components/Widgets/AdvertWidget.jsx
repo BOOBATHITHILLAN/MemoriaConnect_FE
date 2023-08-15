@@ -6,7 +6,7 @@ import { useContext } from "react";
 import Datacontext from "../../datacontext/Datacontext";
 
 function AdvertWidget() {
-  const {url}=useContext(Datacontext);
+  const { url } = useContext(Datacontext);
   const { palette } = useTheme();
   const dark = palette.neutral.dark;
   const main = palette.neutral.main;

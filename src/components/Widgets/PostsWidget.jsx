@@ -12,17 +12,17 @@ function PostsWidget({
   setPosts,
   post,
   setPost,
-  isProfile
+  isProfile,
 }) {
-  const {url}=useContext(Datacontext);
+  const { url } = useContext(Datacontext);
   const [addcomment, setAddcomment] = useState("");
   const getPosts = async () => {
     let data = window.localStorage.getItem("loggedInUser");
     data = JSON.parse(data);
     const res = await axios.get(`${url}/posts`, {
       headers: { Authorization: `Bearer ${data.token}` },
-    });    
-    setPosts(res.data);    
+    });
+    setPosts(res.data);
   };
   const getUserPosts = async () => {
     let data = window.localStorage.getItem("loggedInUser");

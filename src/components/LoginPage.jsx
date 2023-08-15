@@ -25,8 +25,7 @@ const initialValuesLogin = {
 };
 
 const LoginPage = () => {
-
-  const {url}=useContext(Datacontext);
+  const { url } = useContext(Datacontext);
   const { palette } = useTheme();
   const theme = useTheme();
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
@@ -35,7 +34,6 @@ const LoginPage = () => {
 
   const [logged, setLogged] = useState(false);
   const [invalid, setInvalid] = useState(false);
- 
 
   const login = async (values, onSubmitProps) => {
     try {

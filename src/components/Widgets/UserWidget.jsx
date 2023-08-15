@@ -3,9 +3,9 @@ import {
   EditOutlined,
   LocationOnOutlined,
   WorkOutlineOutlined,
-  Twitter   
+  Twitter,
 } from "@mui/icons-material";
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Box, Typography, Divider, useTheme } from "@mui/material";
 import FlexBetween from "../FlexBetween";
 import UserImage from "./UserImage";
@@ -19,10 +19,10 @@ function UserWidget({ userId, picturePath, token, user }) {
   const medium = palette.neutral.medium;
   const main = palette.neutral.main;
 
-  const HandleProfileswitch=(e)=>{
+  const HandleProfileswitch = (e) => {
     e.preventDefault();
-    Navigate(`/profile/${userId}`)
-  }
+    Navigate(`/profile/${userId}`);
+  };
 
   const {
     firstName,
@@ -32,17 +32,13 @@ function UserWidget({ userId, picturePath, token, user }) {
     viewedProfile,
     impressions,
     friends,
-  } = user; 
+  } = user;
   return (
     <>
       {user && (
         <WidgetWrapper>
           {/* FIRST ROW */}
-          <FlexBetween
-            gap="0.5rem"
-            pb="1.1rem"
-            onClick={HandleProfileswitch}
-          >
+          <FlexBetween gap="0.5rem" pb="1.1rem" onClick={HandleProfileswitch}>
             <FlexBetween gap="1rem">
               <UserImage image={picturePath} />
               <Box>
@@ -59,7 +55,9 @@ function UserWidget({ userId, picturePath, token, user }) {
                 >
                   {firstName} {lastName}
                 </Typography>
-                <Typography color={medium}>{friends===undefined?"0":friends.length} friends</Typography>
+                <Typography color={medium}>
+                  {friends === undefined ? "0" : friends.length} friends
+                </Typography>
               </Box>
             </FlexBetween>
             <ManageAccountsOutlined />
@@ -107,9 +105,9 @@ function UserWidget({ userId, picturePath, token, user }) {
 
             <FlexBetween gap="1rem" mb="0.5rem">
               <FlexBetween gap="1rem">
-              <Twitter/>
+                <Twitter />
                 <Box>
-                  <Typography color={main} fontWeight="500">                    
+                  <Typography color={main} fontWeight="500">
                     Twitter
                   </Typography>
                   <Typography color={medium}>Social Network</Typography>
@@ -120,7 +118,7 @@ function UserWidget({ userId, picturePath, token, user }) {
 
             <FlexBetween gap="1rem">
               <FlexBetween gap="1rem">
-                <LinkedInIcon/>
+                <LinkedInIcon />
                 <Box>
                   <Typography color={main} fontWeight="500">
                     Linkedin

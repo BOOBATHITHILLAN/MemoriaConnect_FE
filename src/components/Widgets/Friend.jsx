@@ -9,8 +9,7 @@ import { useContext } from "react";
 import Datacontext from "../../datacontext/Datacontext";
 
 function Friend({ user, friendId, name, subtitle, userPicturePath, token }) {
-
-  const {url}=useContext(Datacontext);
+  const { url } = useContext(Datacontext);
   const Navigate = useNavigate();
   const [friends, setFriends] = useState([]);
   const [isFriend, setIsfriend] = useState(false);
@@ -22,19 +21,16 @@ function Friend({ user, friendId, name, subtitle, userPicturePath, token }) {
   const medium = palette.neutral.medium;
 
   useEffect(() => {
-    setFriends(user.friends);    
-    const isFriend = friends.find((friend) => friend._id === friendId); 
-    isFriend && setIsfriend(true);   
+    setFriends(user.friends);
+    const isFriend = friends.find((friend) => friend._id === friendId);
+    isFriend && setIsfriend(true);
   }, []);
 
   const patchFriend = async () => {
-    const res = axios.patch(
-      `${url}/users/${user._id}/${friendId}`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
-    setFriends(res.data);   
+    const res = axios.patch(`${url}/users/${user._id}/${friendId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    setFriends(res.data);
   };
   return (
     <FlexBetween>
@@ -42,7 +38,7 @@ function Friend({ user, friendId, name, subtitle, userPicturePath, token }) {
         <UserImage image={userPicturePath} size="55px" />
         <Box
           onClick={() => {
-            Navigate(`/profile/${friendId}`);            
+            Navigate(`/profile/${friendId}`);
           }}
         >
           <Typography
@@ -65,7 +61,7 @@ function Friend({ user, friendId, name, subtitle, userPicturePath, token }) {
       </FlexBetween>
       {user._id == friendId ? null : (
         <IconButton
-        disabled
+          disabled
           onClick={() => patchFriend()}
           sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
         >

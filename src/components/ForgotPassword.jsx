@@ -30,23 +30,25 @@ const ForgotPassword = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const Navigate = useNavigate();
-  const [activationlink,setActivationlink]=useState(false);
-  const [expiry,setExpiry]=useState(false);
+  const [activationlink, setActivationlink] = useState(false);
+  const [expiry, setExpiry] = useState(false);
 
-  const forgotPassword=async(values, onSubmitProps)=>{
+  const forgotPassword = async (values, onSubmitProps) => {
     try {
-      const res = await axios.put(`${url}/auth/forgotpassword`, {email:values.email});
+      const res = await axios.put(`${url}/auth/forgotpassword`, {
+        email: values.email,
+      });
       onSubmitProps.resetForm();
       setActivationlink(true);
-      setExpiry(false)      
+      setExpiry(false);
       setTimeout(() => {
-        Navigate("/")
+        Navigate("/");
       }, 1500);
     } catch (error) {
-      setActivationlink(false)
+      setActivationlink(false);
       setExpiry(true);
     }
-  }
+  };
 
   const handleFormSubmit = async (values, onSubmitProps) => {
     await forgotPassword(values, onSubmitProps);
@@ -113,12 +115,18 @@ const ForgotPassword = () => {
                   sx={{ gridColumn: "span 4" }}
                 />
               </Box>
-                <Typography align="center" style={{fontWeight:"bold", marginTop:"20px"}}>
-                  {activationlink && "Mail send successfully..."}
-                </Typography>
-                <Typography align="center" style={{ color:"red",fontWeight:"bold", marginTop:"20px"}}>
-                  {expiry && "Invalid credentials..."}
-                </Typography>
+              <Typography
+                align="center"
+                style={{ fontWeight: "bold", marginTop: "20px" }}
+              >
+                {activationlink && "Mail send successfully..."}
+              </Typography>
+              <Typography
+                align="center"
+                style={{ color: "red", fontWeight: "bold", marginTop: "20px" }}
+              >
+                {expiry && "Invalid credentials..."}
+              </Typography>
               {/* BUTTONS */}
               <Box>
                 <Button

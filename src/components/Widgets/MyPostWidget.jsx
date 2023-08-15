@@ -26,18 +26,24 @@ import axios from "axios";
 import { useContext } from "react";
 import Datacontext from "../../datacontext/Datacontext";
 
-function MyPostWidget({ picturePath, id, token,setPosts,newpost,setNewpost }) {
-
-  const {url}=useContext(Datacontext);
+function MyPostWidget({
+  picturePath,
+  id,
+  token,
+  setPosts,
+  newpost,
+  setNewpost,
+}) {
+  const { url } = useContext(Datacontext);
   const [isImage, setIsImage] = useState(false);
   const [image, setImage] = useState(null);
-  
+
   const { palette } = useTheme();
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   const mediumMain = palette.neutral.mediumMain;
-  const medium = palette.neutral.medium; 
+  const medium = palette.neutral.medium;
 
-  const handlePost=async()=>{
+  const handlePost = async () => {
     const formData = new FormData();
     formData.append("userId", id);
     formData.append("description", newpost);
@@ -46,11 +52,13 @@ function MyPostWidget({ picturePath, id, token,setPosts,newpost,setNewpost }) {
       formData.append("picturePath", image.name);
     }
 
-    const res=await axios.post(`${url}/posts`,formData,{headers: { Authorization: `Bearer ${token}` }});
+    const res = await axios.post(`${url}/posts`, formData, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     setPosts(res.data);
     setImage(null);
-    setNewpost("")
-  }
+    setNewpost("");
+  };
 
   return (
     <WidgetWrapper>

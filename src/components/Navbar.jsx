@@ -25,7 +25,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import Datacontext from "../datacontext/Datacontext";
 
-function Navbar({name}) {
+function Navbar({ name }) {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   const isNonMobileScreen = useMediaQuery("(min-width:1000px)");
   const theme = useTheme();
@@ -35,10 +35,8 @@ function Navbar({name}) {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-  
-  const {mode,setMode}=useContext(Datacontext);
+  const { mode, setMode } = useContext(Datacontext);
   const Navigate = useNavigate();
-
 
   const HandleLogout = async () => {
     window.localStorage.clear();

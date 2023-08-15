@@ -1,4 +1,4 @@
-import React, { createContext, useState,useMemo } from "react";
+import React, { createContext, useState, useMemo, useEffect } from "react";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "../theme";
 
@@ -9,6 +9,10 @@ export const DataProvider = ({ children }) => {
   const theme = useMemo(() => createTheme(themeSettings(mode)));
   const url = "https://memoriaconnect-be.onrender.com";
   // const url="http://localhost:3001"
+
+  useEffect(() => {
+    setMode("light");
+  }, []);
 
   return (
     <Datacontext.Provider value={{ url, theme, mode, setMode }}>

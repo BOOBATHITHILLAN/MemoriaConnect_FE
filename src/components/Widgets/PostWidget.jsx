@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import {
   ChatBubbleOutlineOutlined,
   FavoriteBorderOutlined,
@@ -38,11 +38,10 @@ function PostWidget({
   addcomment,
   setAddcomment,
 }) {
-  const {url}=useContext(Datacontext);
+  const { url } = useContext(Datacontext);
   const [isComments, setIsComments] = useState(false);
   const [isLiked] = useState(true);
   const likeCount = Object.keys(likes).length;
-  
 
   const { palette } = useTheme();
   const main = palette.neutral.main;
@@ -67,8 +66,8 @@ function PostWidget({
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    setPost(res.data);    
-  }; 
+    setPost(res.data);
+  };
 
   return (
     <WidgetWrapper m="2rem 0">

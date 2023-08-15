@@ -17,10 +17,9 @@ function HomePage() {
   const [picturePath, setPicturepath] = useState("");
   const [token, setToken] = useState("");
   const [user, setUser] = useState([]);
-  const [posts,setPosts]=useState("");
-  const [newpost,setNewpost]=useState("");
+  const [posts, setPosts] = useState("");
+  const [newpost, setNewpost] = useState("");
   const [post, setPost] = useState(newpost);
-
 
   const getUser = async () => {
     let data = window.localStorage.getItem("loggedInUser");
@@ -61,13 +60,29 @@ function HomePage() {
           flexBasis={isNonMobileScreens ? "42%" : undefined}
           mt={isNonMobileScreens ? undefined : "2rem"}
         >
-          <MyPostWidget picturePath={picturePath} id={id} token={token} setPosts={setPosts} newpost={newpost} setNewpost={setNewpost}/>
-          <PostsWidget user={user} userId={id} token={token} posts={posts} setPosts={setPosts} post={post} setPost={setPost} isProfile={false}/>
+          <MyPostWidget
+            picturePath={picturePath}
+            id={id}
+            token={token}
+            setPosts={setPosts}
+            newpost={newpost}
+            setNewpost={setNewpost}
+          />
+          <PostsWidget
+            user={user}
+            userId={id}
+            token={token}
+            posts={posts}
+            setPosts={setPosts}
+            post={post}
+            setPost={setPost}
+            isProfile={false}
+          />
         </Box>
         {isNonMobileScreens && (
           <Box flexBasis="26%">
             <AdvertWidget />
-            <Box m="2rem 0" />           
+            <Box m="2rem 0" />
           </Box>
         )}
       </Box>

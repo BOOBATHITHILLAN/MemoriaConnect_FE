@@ -24,7 +24,7 @@ const registerSchema = yup.object().shape({
   password: yup.string().required("required"),
   location: yup.string().required("required"),
   occupation: yup.string().required("required"),
-  picture: yup.string().required("required"),  
+  picture: yup.string().required("required"),
 });
 
 const initialValuesRegister = {
@@ -34,7 +34,7 @@ const initialValuesRegister = {
   password: "",
   location: "",
   occupation: "",
-  picture: "",  
+  picture: "",
 };
 
 function RegisterPage() {
@@ -43,9 +43,9 @@ function RegisterPage() {
   const theme = useTheme();
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   const isNonMobile = useMediaQuery("(min-width:600px)");
-  const Navigate=useNavigate();
-  const [activate,setActivate]=useState(false);
-  const [exist,setExist]=useState(false);
+  const Navigate = useNavigate();
+  const [activate, setActivate] = useState(false);
+  const [exist, setExist] = useState(false);
 
   const register = async (values, onSubmitProps) => {
     try {
@@ -53,22 +53,21 @@ function RegisterPage() {
       const formData = new FormData();
       for (let value in values) {
         formData.append(value, values[value]);
-      }      
+      }
       formData.append("picturePath", values.picture.name);
-      const Registered=await axios.post(`${url}/auth/register`,formData);
-      if(Registered){
+      const Registered = await axios.post(`${url}/auth/register`, formData);
+      if (Registered) {
         onSubmitProps.resetForm();
         setActivate(true);
-        setExist(false)
+        setExist(false);
         setTimeout(() => {
           Navigate("/");
           setActivate(false);
         }, 1500);
       }
-      
     } catch (error) {
       setExist(true);
-      onSubmitProps.resetForm();      
+      onSubmitProps.resetForm();
     }
   };
 
@@ -228,11 +227,11 @@ function RegisterPage() {
                 />
               </Box>
               <Typography align="center">
-                    {activate && "Check Your mail to activate"}
-                </Typography>
-                <Typography align="center" style={{color:"red"}}>
-                    {exist && "User exist, try with new datas"}
-                </Typography>
+                {activate && "Check Your mail to activate"}
+              </Typography>
+              <Typography align="center" style={{ color: "red" }}>
+                {exist && "User exist, try with new datas"}
+              </Typography>
               {/* BUTTONS */}
               <Box>
                 <Button
@@ -263,7 +262,6 @@ function RegisterPage() {
                     Already have an account? Login here..
                   </Typography>
                 </Link>
-                
               </Box>
             </form>
           )}

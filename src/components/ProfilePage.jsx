@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, useMediaQuery,useTheme,Typography } from "@mui/material";
+import { Box, useMediaQuery, useTheme, Typography } from "@mui/material";
 import Navbar from "./Navbar";
 import UserWidget from "./Widgets/UserWidget";
 import MyPostWidget from "./Widgets/MyPostWidget";
@@ -11,8 +11,7 @@ import { useContext } from "react";
 import Datacontext from "../datacontext/Datacontext";
 
 function ProfilePage() {
-
-  const {url}=useContext(Datacontext);
+  const { url } = useContext(Datacontext);
   const [user, setUser] = useState("");
   const [name, setName] = useState("");
   const [token, setToken] = useState("");
@@ -24,14 +23,14 @@ function ProfilePage() {
   const [post, setPost] = useState(newpost);
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const { palette } = useTheme();
-  
+
   const getUser = async () => {
     let data = window.localStorage.getItem("loggedInUser");
     data = JSON.parse(data);
     const res = await axios.get(`${url}/users/${userId}`, {
       headers: { Authorization: `Bearer ${data.token}` },
     });
-    setToken(data.token);    
+    setToken(data.token);
     setUser(res.data);
     setPicturepath(res.data.picturePath);
   };
@@ -97,26 +96,25 @@ function ProfilePage() {
               />
             </>
           ) : (
-            
-            <Typography  
-            fontSize="2rem"  
-            marginTop="3rem"   
-            align="center"          
-            sx={{
-              color: palette.background.alt,
-              backgroundColor: palette.primary.main,
-              borderRadius: "3rem",
-              height:"3rem"              
-            }}
-          >
-            Data Private
-          </Typography>
+            <Typography
+              fontSize="2rem"
+              marginTop="3rem"
+              align="center"
+              sx={{
+                color: palette.background.alt,
+                backgroundColor: palette.primary.main,
+                borderRadius: "3rem",
+                height: "3rem",
+              }}
+            >
+              Data Private
+            </Typography>
           )}
         </Box>
         {isNonMobileScreens && (
           <Box flexBasis="26%">
             <AdvertWidget />
-            <Box m="2rem 0" />           
+            <Box m="2rem 0" />
           </Box>
         )}
       </Box>
