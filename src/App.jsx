@@ -11,7 +11,7 @@ import { useContext } from "react";
 import Datacontext from "./datacontext/Datacontext";
 
 function App() {
-  const { url, theme } = useContext(Datacontext);
+  const { url, theme } = useContext(Datacontext); 
 
   return (
     <div className="app">
