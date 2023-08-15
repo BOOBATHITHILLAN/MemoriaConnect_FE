@@ -10,10 +10,6 @@ export const DataProvider = ({ children }) => {
   const url = "https://memoriaconnect-be.onrender.com";
   // const url="http://localhost:3001"
 
-  useEffect(() => {
-    setMode("light");
-  }, []);
-
   return (
     <Datacontext.Provider value={{ url, theme, mode, setMode }}>
       {children}

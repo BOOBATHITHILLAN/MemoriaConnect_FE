@@ -40,6 +40,7 @@ function Navbar({ name }) {
 
   const HandleLogout = async () => {
     window.localStorage.clear();
+    setMode("light");
     Navigate("/");
   };
 
