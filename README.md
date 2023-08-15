@@ -1,8 +1,19 @@
-# React + Vite
+# [MemoriaConnect]
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Steps to Login :
 
-Currently, two official plugins are available:
+### 1) Create an account (Register), Check your mail
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 2)Click the link and activate your account
+
+### 3) Login 
+
+## Steps to reset password
+
+### 1) Click forgot password on the login page
+
+### 2) Enter your mail id
+
+### 3) Check your mail id to reset the password link
+
+### 4) Click the link and enter your new password
