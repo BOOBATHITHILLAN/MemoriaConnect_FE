@@ -34,6 +34,7 @@ export const DataProvider = ({ children }) => {
       setInvalid(false);
       setTimeout(() => {
         Navigate("/home");
+        setLogged(false);
       }, 1000);
     } catch (error) {
       setLogged(false);
@@ -109,6 +110,7 @@ export const DataProvider = ({ children }) => {
       setExpiry(false);
       setTimeout(() => {
         Navigate("/");
+        setActivationlink(false);
       }, 1500);
     } catch (error) {
       setActivationlink(false);
@@ -133,6 +135,7 @@ export const DataProvider = ({ children }) => {
       setExpirycheck(false);
       setTimeout(() => {
         Navigate("/");
+        setUpdate(false);
       }, 1500);
     } catch (error) {
       setUpdate(false);
