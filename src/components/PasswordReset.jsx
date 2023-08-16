@@ -1,16 +1,8 @@
-import {
-  Box,
-  Button,
-  TextField,
-  useMediaQuery,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, TextField, Typography, useTheme } from "@mui/material";
 import { Formik } from "formik";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import * as yup from "yup";
-import axios from "axios";
-import { useState } from "react";
+import { useEffect } from "react";
 import { useContext } from "react";
 import Datacontext from "../datacontext/Datacontext";
 
@@ -28,32 +20,22 @@ const initialValuesforgot = {
 };
 
 const PasswordReset = () => {
-  const { url } = useContext(Datacontext);
+  const {
+    isNonMobileScreens,
+    isNonMobile,
+    update,
+    expirycheck,
+    setUpdateid,
+    passwordReset,
+  } = useContext(Datacontext);
+
   const { palette } = useTheme();
   const theme = useTheme();
-  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
-  const isNonMobile = useMediaQuery("(min-width:600px)");
-
   const { id } = useParams();
-  const Navigate = useNavigate();
-  const [update, setUpdate] = useState(false);
-  const [expiry, setExpiry] = useState(false);
 
-  const passwordReset = async (values, onSubmitProps) => {
-    try {
-      const Updated = await axios.patch(`${url}/auth/passwordreset/${id}`, {
-        password: values.password,
-      });
-      setUpdate(true);
-      setExpiry(false);
-      setTimeout(() => {
-        Navigate("/");
-      }, 1500);
-    } catch (error) {
-      setUpdate(false);
-      setExpiry(true);
-    }
-  };
+  useEffect(() => {
+    setUpdateid(id);
+  }, []);
 
   const handleFormSubmit = async (values, onSubmitProps) => {
     await passwordReset(values, onSubmitProps);
@@ -145,7 +127,7 @@ const PasswordReset = () => {
                 align="center"
                 style={{ color: "red", fontWeight: "bold", marginTop: "20px" }}
               >
-                {expiry && "Password reset link expired"}
+                {expirycheck && "Password reset link expired"}
               </Typography>
 
               {/* BUTTONS */}

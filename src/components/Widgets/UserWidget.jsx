@@ -12,7 +12,7 @@ import UserImage from "./UserImage";
 import WidgetWrapper from "./WidgetWrapper";
 import { useNavigate } from "react-router-dom";
 
-function UserWidget({ userId, picturePath, token, user }) {
+function UserWidget({ userId, picturePath,user }) {
   const { palette } = useTheme();
   const Navigate = useNavigate();
   const dark = palette.neutral.dark;

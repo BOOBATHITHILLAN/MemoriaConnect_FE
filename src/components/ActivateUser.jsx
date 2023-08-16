@@ -1,45 +1,25 @@
-import {
-  Box,
-  Button,
-  useMediaQuery,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import React, { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import { Box, Button, Typography, useTheme } from "@mui/material";
+import React, { useEffect} from "react";
+import { Link, useParams } from "react-router-dom";
 import { useContext } from "react";
 import Datacontext from "../datacontext/Datacontext";
 
 const ActivateUser = () => {
-  const { url } = useContext(Datacontext);
+  const {
+    isNonMobileScreens,
+    isNonMobile,
+    activatedone,
+    activated,
+    Activateaccount,
+    setIdactivate,
+  } = useContext(Datacontext);
   const { palette } = useTheme();
   const theme = useTheme();
-  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
-  const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const { id } = useParams();
-  const Navigate = useNavigate();
-  const [activate, setActivate] = useState(false);
-  const [activated, setActivated] = useState(false);
-
-  const Activateaccount = async (e) => {
-    e.preventDefault();
-    try {
-      const Activated = await axios.patch(`${url}/auth/activateuser/${id}`);
-      if (Activated) {
-        setActivate(true);
-        setActivated(false);
-        setTimeout(() => {
-          setActivate(false);
-          Navigate("/");
-        }, 1000);
-      }
-    } catch (error) {
-      setActivated(true);
-      setActivate(false);
-    }
-  };
+  useEffect(() => {
+    setIdactivate(id);
+  }, []);
 
   return (
     <Box>
@@ -82,7 +62,7 @@ const ActivateUser = () => {
             align="center"
             style={{ marginTop: "20px", fontWeight: "bold" }}
           >
-            {activate && "Account activated successfully...."}
+            {activatedone && "Account activated successfully...."}
           </Typography>
           <Typography
             align="center"

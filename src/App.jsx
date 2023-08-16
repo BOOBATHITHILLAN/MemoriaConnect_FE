@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="app">
-      <Router>
+      
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
@@ -37,7 +37,7 @@ function App() {
             <Route path="/profile/:userId" element={<ProfilePage />} />
           </Routes>
         </ThemeProvider>
-      </Router>
+      
     </div>
   );
 }

@@ -11,8 +11,7 @@ import { useContext } from "react";
 import Datacontext from "../datacontext/Datacontext";
 
 function HomePage() {
-  const { url } = useContext(Datacontext);
-  const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
+  const { url,isNonMobileScreens } = useContext(Datacontext);
   const [name, setName] = useState("");
   const [id, setId] = useState("");
   const [picturePath, setPicturepath] = useState("");
@@ -22,7 +21,7 @@ function HomePage() {
   const [newpost, setNewpost] = useState("");
   const [post, setPost] = useState(newpost);
 
-  const getUser = async () => {
+  const getUsers = async () => {
     let data = window.localStorage.getItem("loggedInUser");
     data = JSON.parse(data);
     const res = await axios.get(`${url}/users`, {
@@ -35,7 +34,7 @@ function HomePage() {
     setUser(res.data);
   };
   useEffect(() => {
-    getUser();
+    getUsers();
   }, []);
   return (
     <Box>

@@ -1,19 +1,10 @@
-import {
-  Box,
-  Button,
-  TextField,
-  useMediaQuery,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, TextField, Typography, useTheme } from "@mui/material";
 import { Formik } from "formik";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 import Dropzone from "react-dropzone";
-import axios from "axios";
 import FlexBetween from "./FlexBetween";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import { useState } from "react";
 import { useContext } from "react";
 import Datacontext from "../datacontext/Datacontext";
 
@@ -38,42 +29,15 @@ const initialValuesRegister = {
 };
 
 function RegisterPage() {
-  const { url } = useContext(Datacontext);
+  const { isNonMobileScreens, isNonMobile, activate, exist, register } =
+    useContext(Datacontext);
   const { palette } = useTheme();
   const theme = useTheme();
-  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
-  const isNonMobile = useMediaQuery("(min-width:600px)");
-  const Navigate = useNavigate();
-  const [activate, setActivate] = useState(false);
-  const [exist, setExist] = useState(false);
-
-  const register = async (values, onSubmitProps) => {
-    try {
-      // this allows us to send form info with image
-      const formData = new FormData();
-      for (let value in values) {
-        formData.append(value, values[value]);
-      }
-      formData.append("picturePath", values.picture.name);
-      const Registered = await axios.post(`${url}/auth/register`, formData);
-      if (Registered) {
-        onSubmitProps.resetForm();
-        setActivate(true);
-        setExist(false);
-        setTimeout(() => {
-          Navigate("/");
-          setActivate(false);
-        }, 1500);
-      }
-    } catch (error) {
-      setExist(true);
-      onSubmitProps.resetForm();
-    }
-  };
 
   const handleFormSubmit = async (values, onSubmitProps) => {
     await register(values, onSubmitProps);
   };
+
   return (
     <Box>
       <Box
