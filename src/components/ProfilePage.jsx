@@ -6,6 +6,7 @@ import MyPostWidget from "./Widgets/MyPostWidget";
 import PostsWidget from "./Widgets/PostsWidget";
 import AdvertWidget from "./Widgets/AdvertWidget";
 import { useParams } from "react-router-dom";
+import Barchart from "./Widgets/Barchart";
 import axios from "axios";
 import { useContext } from "react";
 import Datacontext from "../datacontext/Datacontext";
@@ -115,6 +116,7 @@ function ProfilePage() {
           <Box flexBasis="26%">
             <AdvertWidget />
             <Box m="2rem 0" />
+            <Barchart user={user} post={post} posts={posts} />
           </Box>
         )}
       </Box>
