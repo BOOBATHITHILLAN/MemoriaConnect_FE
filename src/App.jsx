@@ -11,33 +11,22 @@ import { useContext } from "react";
 import Datacontext from "./datacontext/Datacontext";
 
 function App() {
-  const { url, theme } = useContext(Datacontext); 
+  const { url, theme } = useContext(Datacontext);
 
   return (
     <div className="app">
-      
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage url={url} />} />
-            <Route
-              path="/activateuser/:id"
-              element={<ActivateUser url={url} />}
-            />
-            <Route
-              path="/forgotpassword"
-              element={<ForgotPassword url={url} />}
-            />
-            <Route
-              path="/forgotpassword/:id"
-              element={<PasswordReset url={url} />}
-            />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/profile/:userId" element={<ProfilePage />} />
-          </Routes>
-        </ThemeProvider>
-      
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/activateuser/:id" element={<ActivateUser />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/forgotpassword/:id" element={<PasswordReset />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/profile/:userId" element={<ProfilePage />} />
+        </Routes>
+      </ThemeProvider>
     </div>
   );
 }
