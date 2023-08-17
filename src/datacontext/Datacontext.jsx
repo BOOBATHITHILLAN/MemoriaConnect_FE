@@ -40,6 +40,9 @@ export const DataProvider = ({ children }) => {
       setLogged(false);
       setInvalid(true);
       onSubmitProps.resetForm();
+      setTimeout(() => {
+        setInvalid(false)
+      }, 1000);
     }
   };
 
@@ -68,6 +71,9 @@ export const DataProvider = ({ children }) => {
     } catch (error) {
       setExist(true);
       onSubmitProps.resetForm();
+      setTimeout(() => {
+        setExist(false)
+      }, 1000);
     }
   };
 

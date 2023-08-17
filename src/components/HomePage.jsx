@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, useMediaQuery } from "@mui/material";
+import { Box } from "@mui/material";
 import Navbar from "./Navbar";
 import UserWidget from "./Widgets/UserWidget";
 import MyPostWidget from "./Widgets/MyPostWidget";
