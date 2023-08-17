@@ -114,7 +114,7 @@ const LoginPage = () => {
                 align="center"
                 style={{ color: "red", fontWeight: "bold", marginTop: "20px" }}
               >
-                {activatepending && "Kindly activate your account..."}
+                {activatepending && "Check your mail to activate account..."}
               </Typography>
 
               {/* BUTTONS */}

@@ -39,7 +39,7 @@ function PostsWidget({
     } else {
       getPosts();
     }
-  }, [post, addcomment]);
+  }, [post, addcomment,posts]);
   return (
     <>
       {posts &&
