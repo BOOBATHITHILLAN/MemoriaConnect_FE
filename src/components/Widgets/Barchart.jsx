@@ -5,7 +5,7 @@ import axios from "axios";
 import { useContext } from "react";
 import Datacontext from "../../datacontext/Datacontext";
 
-function Barchart({user,post,posts}) {
+function Barchart({user,post,posts,newpost}) {
   const { url } = useContext(Datacontext);
 
   const [userdata, setUserdata] = useState({
@@ -39,7 +39,7 @@ function Barchart({user,post,posts}) {
 
   useEffect(() => {
     getUserPost();
-  }, [user,post,posts]);
+  }, [user,post,posts,newpost]);
   return <Bar data={userdata} />;
 }
 

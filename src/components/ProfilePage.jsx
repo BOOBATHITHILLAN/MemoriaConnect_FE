@@ -116,7 +116,7 @@ function ProfilePage() {
           <Box flexBasis="26%">
             <AdvertWidget />
             <Box m="2rem 0" />
-            <Barchart user={user} post={post} posts={posts} />
+            <Barchart user={user} post={post} posts={posts} newpost={newpost}/>
           </Box>
         )}
       </Box>
