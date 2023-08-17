@@ -12,7 +12,7 @@ function PostsWidget({
   setPosts,
   post,
   setPost,
-  isProfile,
+  isProfile
 }) {
   const { url } = useContext(Datacontext);
   const [addcomment, setAddcomment] = useState("");

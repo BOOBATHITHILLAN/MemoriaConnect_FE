@@ -16,7 +16,7 @@ const initialValuesLogin = {
 };
 
 const LoginPage = () => {
-  const { logged, invalid, isNonMobileScreens, isNonMobile,login } =
+  const { logged, invalid, isNonMobileScreens, isNonMobile,login,activatepending } =
     useContext(Datacontext);
   const { palette } = useTheme();
   const theme = useTheme();
@@ -109,6 +109,12 @@ const LoginPage = () => {
                 style={{ color: "red", fontWeight: "bold", marginTop: "20px" }}
               >
                 {invalid && "Invalid credentials..."}
+              </Typography>
+              <Typography
+                align="center"
+                style={{ color: "red", fontWeight: "bold", marginTop: "20px" }}
+              >
+                {activatepending && "Kindly activate your account..."}
               </Typography>
 
               {/* BUTTONS */}

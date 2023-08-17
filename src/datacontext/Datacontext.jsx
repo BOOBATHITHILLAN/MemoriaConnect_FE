@@ -1,4 +1,4 @@
-import React, { createContext, useState, useMemo, useEffect } from "react";
+import React, { createContext, useState, useMemo } from "react";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "../theme";
 import axios from "axios";
@@ -18,6 +18,7 @@ export const DataProvider = ({ children }) => {
   //Login Page
   const [logged, setLogged] = useState(false);
   const [invalid, setInvalid] = useState(false);
+  const [activatepending,setActivatepending]=useState(false);
 
   const login = async (values, onSubmitProps) => {
     try {
@@ -38,11 +39,17 @@ export const DataProvider = ({ children }) => {
       }, 1000);
     } catch (error) {
       setLogged(false);
-      setInvalid(true);
+
+      if (error.response.status == 400 || error.response.status == 500) {
+        setInvalid(true);
+      }else{
+        setActivatepending(true)
+      }           
       onSubmitProps.resetForm();
       setTimeout(() => {
-        setInvalid(false)
-      }, 1000);
+        setInvalid(false);
+        setActivatepending(false)
+      }, 1500);
     }
   };
 
@@ -72,7 +79,7 @@ export const DataProvider = ({ children }) => {
       setExist(true);
       onSubmitProps.resetForm();
       setTimeout(() => {
-        setExist(false)
+        setExist(false);
       }, 1000);
     }
   };
@@ -158,6 +165,7 @@ export const DataProvider = ({ children }) => {
         setMode,
         logged,
         invalid,
+        activatepending,
         login,
         isNonMobileScreens,
         isNonMobile,
