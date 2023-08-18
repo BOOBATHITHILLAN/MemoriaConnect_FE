@@ -16,6 +16,7 @@ function PostsWidget({
 }) {
   const { url } = useContext(Datacontext);
   const [addcomment, setAddcomment] = useState("");
+  const [postsrender,setPostsrender]=useState(false);
   const getPosts = async () => {
     let data = window.localStorage.getItem("loggedInUser");
     data = JSON.parse(data);
@@ -39,7 +40,7 @@ function PostsWidget({
     } else {
       getPosts();
     }
-  }, [post, addcomment,posts]);
+  }, [post, addcomment]);
   return (
     <>
       {posts &&
