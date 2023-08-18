@@ -77,14 +77,19 @@ function ProfilePage() {
         >
           {userId === loggedId ? (
             <>
-              <MyPostWidget
-                picturePath={picturePath}
-                id={userId}
-                token={token}
-                setPosts={setPosts}
-                newpost={newpost}
-                setNewpost={setNewpost}
-              />
+              <Typography
+                fontSize="2rem"
+                marginTop="3rem"
+                align="center"
+                sx={{
+                  color: palette.background.alt,
+                  backgroundColor: palette.primary.main,
+                  borderRadius: "3rem",
+                  height: "3rem",
+                }}
+              >
+                Your posts
+              </Typography>
               <PostsWidget
                 user={user}
                 userId={userId}
@@ -116,7 +121,7 @@ function ProfilePage() {
           <Box flexBasis="26%">
             <AdvertWidget />
             <Box m="2rem 0" />
-            <Barchart user={user} post={post} posts={posts} newpost={newpost}/>
+            <Barchart user={user} post={post} posts={posts} newpost={newpost} />
           </Box>
         )}
       </Box>

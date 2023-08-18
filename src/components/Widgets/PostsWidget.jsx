@@ -12,11 +12,10 @@ function PostsWidget({
   setPosts,
   post,
   setPost,
-  isProfile
+  isProfile,
 }) {
   const { url } = useContext(Datacontext);
   const [addcomment, setAddcomment] = useState("");
-  const [postsrender,setPostsrender]=useState(false);
   const getPosts = async () => {
     let data = window.localStorage.getItem("loggedInUser");
     data = JSON.parse(data);
@@ -24,9 +23,6 @@ function PostsWidget({
       headers: { Authorization: `Bearer ${data.token}` },
     });
     setPosts(res.data);
-    setTimeout(() => {
-      postsrender===true ?setPostsrender(false):setPostsrender(true);
-    }, 500);
   };
   const getUserPosts = async () => {
     let data = window.localStorage.getItem("loggedInUser");
@@ -43,7 +39,7 @@ function PostsWidget({
     } else {
       getPosts();
     }
-  }, [post, addcomment,postsrender]);
+  }, [post, addcomment]);
   return (
     <>
       {posts &&
