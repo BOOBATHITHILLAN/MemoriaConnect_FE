@@ -24,6 +24,9 @@ function PostsWidget({
       headers: { Authorization: `Bearer ${data.token}` },
     });
     setPosts(res.data);
+    setTimeout(() => {
+      postsrender===true ?setPostsrender(false):setPostsrender(true);
+    }, 500);
   };
   const getUserPosts = async () => {
     let data = window.localStorage.getItem("loggedInUser");
@@ -40,7 +43,7 @@ function PostsWidget({
     } else {
       getPosts();
     }
-  }, [post, addcomment]);
+  }, [post, addcomment,postsrender]);
   return (
     <>
       {posts &&
